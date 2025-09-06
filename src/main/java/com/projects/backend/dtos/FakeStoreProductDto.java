@@ -1,16 +1,15 @@
-package com.projects.backend.models;
+package com.projects.backend.dtos;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
-public class Product {
+
+public class FakeStoreProductDto {
     Long id;
     String title;
-    String desc;
-    double price;
-    Category category;
+    Double price;
+    String category;
+    String description;
 
     public Long getId() {
         return id;
@@ -28,27 +27,27 @@ public class Product {
         this.title = title;
     }
 
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
