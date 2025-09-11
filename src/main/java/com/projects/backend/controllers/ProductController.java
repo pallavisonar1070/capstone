@@ -2,10 +2,9 @@ package com.projects.backend.controllers;
 
 import com.projects.backend.models.Product;
 import com.projects.backend.services.ProductService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/products")
@@ -18,5 +17,15 @@ public class ProductController {
     public Product getProductById(@PathVariable("id") Long id){
 
         return productService.getProductById(id);
+    }
+
+    @GetMapping()
+    public List<Product> getAllProduct(){
+        return productService.getAllProducts();
+    }
+
+    @PutMapping("{id}")
+    public Product replaceProduct(@PathVariable("id") long id, @RequestBody Product product){
+        return productService.replaceProduct(id, product);
     }
 }
