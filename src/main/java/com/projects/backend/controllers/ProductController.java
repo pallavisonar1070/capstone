@@ -1,5 +1,7 @@
 package com.projects.backend.controllers;
 
+import com.projects.backend.dtos.ProductNotFoundDto;
+import com.projects.backend.exceptions.ProductNotFoundException;
 import com.projects.backend.models.Product;
 import com.projects.backend.services.ProductService;
 import org.springframework.http.HttpStatus;
@@ -13,35 +15,36 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductController {
     ProductService productService;
-    public ProductController(ProductService productService){
+
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
+
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable("id") Long id) throws InstanceNotFoundException {
-        Product product = null;
-        product = productService.getProductById(id);
+    public ResponseEntity<Product> getProductById(@PathVariable("id") Long id) throws ProductNotFoundException {
+        Product product = productService.getProductById(id);
 
         ResponseEntity<Product> productResponseEntity;
-//        if(product == null){
-//            productResponseEntity = new ResponseEntity<>("Product not found for ID" +id, HttpStatus.NOT_FOUND);
-//            return productResponseEntity;
-//        }
         productResponseEntity = new ResponseEntity<>(product, HttpStatus.OK);
         return productResponseEntity;
     }
 
     @GetMapping()
-    public List<Product> getAllProduct(){
+    public List<Product> getAllProduct() {
         return productService.getAllProducts();
     }
 
     @PutMapping("{id}")
-    public Product replaceProduct(@PathVariable("id") long id, @RequestBody Product product){
+    public Product replaceProduct(@PathVariable("id") long id, @RequestBody Product product) {
         return productService.replaceProduct(id, product);
     }
 
-    @ExceptionHandler(InstanceNotFoundException.class)
-    public ResponseEntity<String> handleInstanceNotFoundException(InstanceNotFoundException exception){
-        return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<ProductNotFoundDto> handleInstanceNotFoundException(ProductNotFoundException exception) {
+        ProductNotFoundDto productNotFoundDto =
+                new ProductNotFoundDto();
+        productNotFoundDto.setMessage(exception.getMessage());
+        productNotFoundDto.setErrorCode(exception.getId());
+        return new ResponseEntity<>(productNotFoundDto, HttpStatus.NOT_FOUND);
     }
 }
