@@ -1,1 +1,1 @@
-# capstone
+This project is a capstone ecommerce platform that allows users to browse products, add them to a cart, place orders, and complete secure payments. The goal is to design and implement a scalable system using a microservices-based architecture.
