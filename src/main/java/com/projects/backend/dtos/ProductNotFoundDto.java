@@ -1,6 +1,8 @@
 package com.projects.backend.dtos;
 
+import lombok.Getter;
 
+@Getter
 public class ProductNotFoundDto {
     Long errorCode;
     String message;
@@ -11,5 +13,13 @@ public class ProductNotFoundDto {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Long getErrorCode() {
+        return errorCode;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }

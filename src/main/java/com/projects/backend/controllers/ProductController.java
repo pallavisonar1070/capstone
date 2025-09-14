@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.management.InstanceNotFoundException;
 import java.util.List;
 
 @RestController
@@ -21,7 +20,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable("id") Long id) throws ProductNotFoundException {
+    public ResponseEntity<Product> getProductById(@PathVariable("id") Long id) {
         Product product = productService.getProductById(id);
 
         ResponseEntity<Product> productResponseEntity;
@@ -39,12 +38,12 @@ public class ProductController {
         return productService.replaceProduct(id, product);
     }
 
-    @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<ProductNotFoundDto> handleInstanceNotFoundException(ProductNotFoundException exception) {
-        ProductNotFoundDto productNotFoundDto =
-                new ProductNotFoundDto();
-        productNotFoundDto.setMessage(exception.getMessage());
-        productNotFoundDto.setErrorCode(exception.getId());
-        return new ResponseEntity<>(productNotFoundDto, HttpStatus.NOT_FOUND);
-    }
+//    @ExceptionHandler(ProductNotFoundException.class)
+//    public ResponseEntity<ProductNotFoundDto> handleInstanceNotFoundException(ProductNotFoundException exception) {
+//        ProductNotFoundDto productNotFoundExceptionDto =
+//                new ProductNotFoundDto();
+//        productNotFoundExceptionDto.setErrorCode(exception.getId());
+//        productNotFoundExceptionDto.setMessage(exception.getMessage());
+//        return new ResponseEntity<>(productNotFoundExceptionDto, HttpStatus.NOT_FOUND);
+//    }
 }
