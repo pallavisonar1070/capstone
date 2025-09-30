@@ -1,4 +1,4 @@
-package com.projects.backend.inheritance.mappedsuperclass;
+package com.projects.backend.inheritance.joinedtable;
 
 import jakarta.persistence.Entity;
 import lombok.Getter;
@@ -6,8 +6,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name = "msc_students")
-public class Students extends User{
+@Entity(name = "jt_students")
+public class Students extends User {
     String course;
     String batch;
 

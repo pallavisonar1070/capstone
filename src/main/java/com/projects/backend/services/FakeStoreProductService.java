@@ -52,7 +52,7 @@ public class FakeStoreProductService implements ProductService {
         fakeStoreProductDto.setTitle(product.getTitle());
         fakeStoreProductDto.setId(product.getId());
         //fakeStoreProductDto.setCategory(product.getCategory().getTitle());
-        fakeStoreProductDto.setDescription(product.getDesc());
+        fakeStoreProductDto.setDescription(product.getDescription());
         fakeStoreProductDto.setPrice(product.getPrice());
 
         RequestCallback requestCallback = restTemplate.httpEntityCallback(fakeStoreProductDto);
@@ -72,7 +72,7 @@ public class FakeStoreProductService implements ProductService {
         Product product = new Product();
         product.setId(fakeStoreProductDto.getId());
         product.setTitle(fakeStoreProductDto.getTitle());
-        product.setDesc(fakeStoreProductDto.getDescription());
+        product.setDescription(fakeStoreProductDto.getDescription());
         product.setPrice(fakeStoreProductDto.getPrice());
 
         Category category = new Category();

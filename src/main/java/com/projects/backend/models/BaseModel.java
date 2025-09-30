@@ -1,18 +1,15 @@
-package com.projects.backend.inheritance.mappedsuperclass;
+package com.projects.backend.models;
 
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
 
-@MappedSuperclass
 @Getter
 @Setter
-
-public class User {
-    String name;
+@MappedSuperclass
+public class BaseModel {
     @Id
     Long id;
-    String password;
-    String email;
+    String title;
 }

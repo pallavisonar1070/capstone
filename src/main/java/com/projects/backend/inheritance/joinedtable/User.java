@@ -1,14 +1,13 @@
-package com.projects.backend.inheritance.mappedsuperclass;
+package com.projects.backend.inheritance.joinedtable;
 
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@MappedSuperclass
+@Inheritance(strategy = InheritanceType.JOINED)
 @Getter
 @Setter
-
+@Entity(name = "jt_user")
 public class User {
     String name;
     @Id
