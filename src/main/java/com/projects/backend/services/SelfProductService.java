@@ -3,6 +3,7 @@ package com.projects.backend.services;
 import com.projects.backend.exceptions.ProductNotFoundException;
 import com.projects.backend.models.Category;
 import com.projects.backend.models.Product;
+import com.projects.backend.projections.ProductTitleAndDesc;
 import com.projects.backend.repos.CategoryRepo;
 import com.projects.backend.repos.ProductRepo;
 import org.springframework.context.annotation.Primary;
@@ -23,7 +24,10 @@ public class SelfProductService implements ProductService{
 
     @Override
     public Product getProductById(Long id) throws ProductNotFoundException {
+        ProductTitleAndDesc productTitleAndDesc = productRepo.getProductTitleAndDesc(id);
+        System.out.println("Projections : " + productTitleAndDesc.getTitle() + ", " + productTitleAndDesc.getDescription());
         return productRepo.findById(id).get();
+       // return productRepo.getProductTitleAndDesc(id);
     }
 
     @Override
