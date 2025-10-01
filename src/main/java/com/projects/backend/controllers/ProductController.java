@@ -47,4 +47,8 @@ public class ProductController {
 //        productNotFoundExceptionDto.setMessage(exception.getMessage());
 //        return new ResponseEntity<>(productNotFoundExceptionDto, HttpStatus.NOT_FOUND);
 //    }
+    @PostMapping
+    public Product createProduct(@RequestBody Product product){
+        return productService.createProduct(product);
+    }
 }
