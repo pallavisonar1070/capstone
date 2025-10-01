@@ -12,4 +12,6 @@ public interface ProductRepo extends JpaRepository<Product, Long> {
     @Query("select p.title as title, p.description from Product p where p.id = :id")
     ProductTitleAndDesc getProductTitleAndDesc(@Param("id") Long id);
 
+    @Query(value = "select title, description from product where id = :id", nativeQuery = true)
+    ProductTitleAndDesc getProductTitleAndDescSQL(@Param("id") Long id);
 }
