@@ -27,11 +27,10 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProductById(
-            @RequestHeader("Token") String token,
             @PathVariable("id") Long id) {
-        if(!tokenService.validateToken(token)){
-            throw new UnknownAccessTypeException("User is not authorized");
-        }
+//        if(!tokenService.validateToken(token)){
+//            throw new UnknownAccessTypeException("User is not authorized");
+//        }
         Product product = productService.getProductById(id);
 
         ResponseEntity<Product> productResponseEntity;
