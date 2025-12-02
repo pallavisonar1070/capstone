@@ -14,8 +14,8 @@ import java.util.List;
 @Entity
 public class Category extends BaseModel{
     String description;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "category")
-    List<Product> productList;
+//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "category")
+//    List<Product> productList;
 //    @ManyToMany
 //    List<Product> productList2;
 }
