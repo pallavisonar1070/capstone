@@ -20,11 +20,15 @@ public class ProductController {
     ProductService productService;
     TokenService tokenService;
 
-    public ProductController(@Qualifier("SelfProductService") ProductService productService, TokenService tokenService) {
+//    public ProductController(@Qualifier("SelfProductService") ProductService productService, TokenService tokenService) {
+//        this.productService = productService;
+//        this.tokenService = tokenService;
+//    }
+
+    public ProductController(ProductService productService, TokenService tokenService) {
         this.productService = productService;
         this.tokenService = tokenService;
     }
-
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProductById(
             @PathVariable("id") Long id) {
