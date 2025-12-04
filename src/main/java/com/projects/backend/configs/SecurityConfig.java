@@ -12,7 +12,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                                .requestMatchers("/products/**").authenticated()
+                                //.requestMatchers("/products/**").authenticated()
 //                        //.authenticated()
 //                        .hasAuthority("SCOPE_ADMIN")
                                 //.anyRequest().permitAll()

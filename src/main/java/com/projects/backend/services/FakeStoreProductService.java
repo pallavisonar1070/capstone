@@ -4,6 +4,7 @@ import com.projects.backend.dtos.FakeStoreProductDto;
 import com.projects.backend.exceptions.ProductNotFoundException;
 import com.projects.backend.models.Category;
 import com.projects.backend.models.Product;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@Primary
 public class FakeStoreProductService implements ProductService {
     RestTemplate restTemplate;
 
@@ -31,6 +33,7 @@ public class FakeStoreProductService implements ProductService {
     public Product getProductById(Long id) throws ProductNotFoundException {
         Product product = (Product) redisTemplate.opsForHash().get("PRODUCTS", "PRODUCT_" + id);
         if (product != null) {
+            System.out.println("From Cache..");
             return product;
         }
 
